@@ -1,0 +1,11 @@
+# Template for making a service use letsencrypt with the nginx-proxy
+[Unit]
+# Replace 'default' with the approriate instance name
+Requires=nginx-proxy-letsencrypt@default.conf
+After=nginx-proxy-letsencrypt@default.conf
+
+[Service]
+# Replace with the correct host name(s)
+Environment='DOCKER_ENV_LETSENCRYPT_HOST=LETSENCRYPT_HOST=example.com,example.org'
+# Replace with a valid email address
+Environment='DOCKER_ENV_LETSENCRYPT_EMAIL=LETSENCRYPT_EMAIL=email@example.com'

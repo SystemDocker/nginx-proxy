@@ -1,0 +1,15 @@
+[Unit]
+Description=LetsEncrypt companion for nginx-proxy
+BindsTo=nginx-proxy@%i
+After=nginx-proxy@%i
+
+[Service]
+# SystemDocker configuration
+#Environment='DOCKER_IMAGE=jrcs/letsencrypt-nginx-proxy-companion'
+# Temporary replacement due to bug, see https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion/issues/130
+Environment='DOCKER_IMAGE=alastaircoote/docker-letsencrypt-nginx-proxy-companion'
+
+# Setup the volumes
+Environment='DOCKER_VOLUME_ETC_NGINX_CERTS=/srv/docker/nginx-proxy/instance/%i/certs:/etc/nginx/certs:rw'
+Environment='DOCKER_VOLUMES_FROM_NGINX_PROXY=nginx-proxy.%i'
+Environment='DOCKER_VOLUME_VAR_RUN_DOCKER_SOCK=/var/run/docker.sock:/var/run/docker.sock:ro'
