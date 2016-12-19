@@ -1,0 +1,12 @@
+[Unit]
+Description=Automated nginx proxy for Docker containers using docker-gen
+
+[Service]
+# SystemDocker configuration
+Environment='DOCKER_IMAGE=jwilder/nginx-proxy'
+
+# Setup the volumes
+Environment='DOCKER_VOLUME_ETC_NGINX_CERTS=/srv/docker/nginx-proxy/instance/%i/certs:/etc/nginx/certs:ro'
+Environment='DOCKER_VOLUME_ETC_NGINX_VHOST_D=/etc/nginx/vhost.d'
+Environment='DOCKER_VOLUME_USR_SHARE_NGINX_HTML=/usr/share/nginx/html'
+Environment='DOCKER_VOLUME_TMP_DOCKER_SOCK=/var/run/docker.sock:/tmp/docker.sock:ro'
