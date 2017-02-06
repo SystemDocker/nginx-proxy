@@ -5,9 +5,7 @@ After=nginx-proxy@%i.service
 
 [Service]
 # SystemDocker configuration
-#Environment='DOCKER_IMAGE=jrcs/letsencrypt-nginx-proxy-companion'
-# Temporary replacement due to bug, see https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion/issues/130
-Environment='DOCKER_IMAGE=alastaircoote/docker-letsencrypt-nginx-proxy-companion'
+Environment='DOCKER_IMAGE=jrcs/letsencrypt-nginx-proxy-companion'
 
 # Setup the volumes
 Environment='DOCKER_VOLUME_ETC_NGINX_CERTS=/srv/docker/nginx-proxy/instance/%i/certs:/etc/nginx/certs:rw'
