@@ -1,7 +1,7 @@
 [Unit]
 Description=LetsEncrypt companion for nginx-proxy
-BindsTo=nginx-proxy@%i
-After=nginx-proxy@%i
+BindsTo=nginx-proxy@%i.service
+After=nginx-proxy@%i.service
 
 [Service]
 # SystemDocker configuration
